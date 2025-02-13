@@ -29,7 +29,7 @@ pipeline {
                             
                             sh "git config user.email 'vijay.kumar@gmail.com'"
                             sh "git config user.name 'vijay2181'"
-                            
+
                             // Ensure we are on the correct branch and pull latest changes
                             sh "git checkout ${BRANCH}"
                             sh "git pull origin ${BRANCH}"
@@ -48,10 +48,18 @@ pipeline {
                             // Ensure Git detects changes
                             sh "git status"
 
-                            // Add changes, commit, and push
+                            // Add changes and commit
                             sh "git add -A"
                             sh "git commit -m 'Updated manifest: ${DOCKERTAG}' || echo 'No changes to commit'"
-                            sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kubernetesmanifest.git HEAD:${BRANCH}"
+
+                            // ✅ Secure authentication with `git credential.helper`
+                            sh """
+                            git config credential.helper 'cache --timeout=10'
+                            echo 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com' > ~/.git-credentials
+                            git push origin ${BRANCH}
+                            rm -f ~/.git-credentials
+                            """
+
                         }
                     }
                 }
