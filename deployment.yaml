@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flaskdemo
-        image: vijay4devops/argocd-demo:11
+        image: vijay1447/argocd-demo:1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
