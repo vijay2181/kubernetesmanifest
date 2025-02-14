@@ -31,7 +31,7 @@ pipeline {
                             sh "git config user.name vijay2181"
                             //sh "git switch master"
                             sh "cat deployment.yaml"
-                            sh "sed -i 's+vijay4devops/argocd-demo.*+vijay4devops/argocd-demo:${DOCKERTAG}+g' deployment.yaml"
+                            sh "sed -i 's+vijay1447/argocd-demo.*+vijay1447/argocd-demo:${DOCKERTAG}+g' deployment.yaml"
                             sh "cat deployment.yaml"
                             sh "git add ."
                             sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
