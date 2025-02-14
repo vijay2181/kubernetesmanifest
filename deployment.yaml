@@ -34,4 +34,4 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 5000
-    nodePort: 30000  # Exposes the service on <minikube-ip>:30080
+    nodePort: 30001  # Exposes the service on <minikube-ip>:30080
