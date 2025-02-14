@@ -16,7 +16,7 @@ spec:
       serviceAccountName: argocd-sa  # Using the newly created ServiceAccount
       containers:
       - name: flaskdemo
-        image: vijay1447/argocd-demo:4
+        image: vijay1447/argocd-demo:15
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
